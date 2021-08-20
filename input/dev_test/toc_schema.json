@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+        "toc": {
+            "type": "object",
+            "properties": {
+                "props": {
+                    "type": "object",
+                    "properties": {
+                        "subcollection": {
+                            "type": "string"
+                            },
+                        "category": {"type": "string" },
+                        "audience": {"type": "string" },
+                        "href": {
+                            "type": "string",
+                            "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
+                        },
+                        "path": {
+                            "type": "string"
+                            },
+                        "label": {
+                            "type": "string"
+                            },
+                        "version": {
+                            "type": "number" 
+                            }
+                    },
+                    "required": ["subcollection", "href", "path", "label"]
+                },
+                "entries": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "navgroup": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {"type": "string"},
+                                    "topics": {
+                                        "anyOf": [
+                                            {"type": "string"},
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "topicgroup": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "label": { "type": "string" },
+                                                            "topics": { 
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                }
+            },
+            "required": ["props", "entries"]
+        }
+    }
+}
