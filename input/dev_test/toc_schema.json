@@ -4,7 +4,8 @@
         "toc": {
             "type": "object",
             "properties": {
-                "props": {
+                "label": {"type": "string"},
+                "properties": {
                     "type": "object",
                     "properties": {
                         "subcollection": {
@@ -13,6 +14,14 @@
                         "category": {"type": "string" },
                         "audience": {"type": "string" },
                         "href": {
+                            "type": "string",
+                            "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
+                        },
+                        "console-page": {
+                            "type": "string",
+                            "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
+                        },
+                        "product-page": {
                             "type": "string",
                             "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
                         },
@@ -37,27 +46,32 @@
                                 "type": "object",
                                 "properties": {
                                     "id": {"type": "string"},
-                                    "topics": {
-                                        "anyOf": [
-                                            {"type": "string"},
-                                            {
-                                                "type": "object",
-                                                "properties": {
-                                                    "topicgroup": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "label": { "type": "string" },
-                                                            "topics": { 
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string"
+                                    "topics": { 
+                                        "type":"array",
+                                        "items": {
+                                            "anyOf": [
+                                                {
+                                                    "type":"object",
+                                                    "properties": {
+                                                        "topicgroup": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "label": {"type": "string"},
+                                                                "topics": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
                                                                 }
                                                             }
                                                         }
                                                     }
+                                                },
+                                                {
+                                                    "type": "string"
                                                 }
-                                            }
-                                        ]
+                                            ]
+                                        }   
                                     }
                                 }
                             }
@@ -65,7 +79,8 @@
                     } 
                 }
             },
-            "required": ["props", "entries"]
+            "required": ["properties", "entries"]
         }
-    }
+    },
+    "required": ["toc"]
 }
