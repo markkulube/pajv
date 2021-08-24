@@ -1,86 +1,156 @@
 {
-    "type": "object",
-    "properties": {
-        "toc": {
+  "type": "object",
+  "properties": {
+    "definitions": {
+      "links": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "link": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string" },
+                "href": { "$ref": "#/properties/definitions/url_type" }
+              },
+              "required": ["label", "href"]
+            }
+          },
+          "required": ["link"]
+        }
+      },
+      "url_type": {
+        "type": "string",
+        "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
+      }
+    },
+    "toc": {
+      "type": "object",
+      "properties": {
+        "label": { "type": "string" },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "subcollection": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string",
+              "enum": [
+                "ai",
+                "analytics",
+                "blockchain",
+                "compute",
+                "containers",
+                "databse",
+                "dev_ops",
+                "integration",
+                "internal",
+                "internet_of_things",
+                "logging_monitoring",
+                "migration_tools",
+                "mobile",
+                "network",
+                "platform_services",
+                "security",
+                "storage"
+              ]
+            },
+            "audience": {
+              "type": "string",
+              "enum": ["platform", "service", "software", "internal"]
+            },
+            "href": { "$ref": "#/properties/definitions/url_type" },
+            "console-page": { "$ref": "#/properties/definitions/url_type" },
+            "product-page": { "$ref": "#/properties/definitions/url_type" },
+            "path": { "type": "string" },
+            "label": { "type": "string" },
+            "version": { "type": "number" }
+          },
+          "required": ["subcollection", "href", "path", "label"],
+          "additionalProperties": false
+        },
+        "entries": {
+          "type": "array",
+          "items": {
             "type": "object",
             "properties": {
-                "label": {"type": "string"},
+              "navgroup": {
+                "type": "object",
                 "properties": {
-                    "type": "object",
-                    "properties": {
-                        "subcollection": {
-                            "type": "string"
-                            },
-                        "category": {"type": "string" },
-                        "audience": {"type": "string" },
-                        "href": {
-                            "type": "string",
-                            "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
-                        },
-                        "console-page": {
-                            "type": "string",
-                            "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
-                        },
-                        "product-page": {
-                            "type": "string",
-                            "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
-                        },
-                        "path": {
-                            "type": "string"
-                            },
-                        "label": {
-                            "type": "string"
-                            },
-                        "version": {
-                            "type": "number" 
-                            }
-                    },
-                    "required": ["subcollection", "href", "path", "label"]
-                },
-                "entries": {
+                  "id": { "type": "string" },
+                  "topics": {
                     "type": "array",
                     "items": {
-                        "type": "object",
-                        "properties": {
-                            "navgroup": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {"type": "string"},
-                                    "topics": { 
-                                        "type":"array",
-                                        "items": {
-                                            "anyOf": [
-                                                {
-                                                    "type":"object",
-                                                    "properties": {
-                                                        "topicgroup": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "label": {"type": "string"},
-                                                                "topics": {
-                                                                    "type": "array",
-                                                                    "items": {
-                                                                        "type": "string"
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    "type": "string"
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "topicgroup": {
+                              "type": "object",
+                              "properties": {
+                                "label": { "type": "string" },
+                                "topics": {
+                                  "type": "array",
+                                  "items": {
+                                    "anyOf": [
+                                      { "type": "string" },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "topicgroup": {
+                                            "type": "object",
+                                            "properties": {
+                                              "label": { "type": "string" },
+                                              "topics": {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "string"
                                                 }
-                                            ]
-                                        }   
-                                    }
+                                              },
+                                              "links": {
+                                                "$ref": "#/properties/definitions/links"
+                                              }
+                                            },
+                                            "required": ["label", "topics"],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      }
+                                    ]
+                                  }
+                                },
+                                "links": {
+                                  "$ref": "#/properties/definitions/links"
                                 }
+                              },
+                              "required": ["label", "topics"],
+                              "additionalProperties": false
                             }
-                        }
-                    } 
-                }
+                          },
+                          "additionalProperties": false,
+                          "links": { "$ref": "#/properties/definitions/links" }
+                        },
+                        { "type": "string" }
+                      ]
+                    }
+                  },
+                  "links": { "$ref": "#/properties/definitions/links" }
+                },
+                "required": ["id", "topics"],
+                "additionalProperties": false
+              }
             },
-            "required": ["properties", "entries"]
+            "additionalProperties": false
+          }
         }
-    },
-    "required": ["toc"]
+      },
+      "required": ["properties", "entries"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["toc"],
+  "additionalProperties": false
 }
