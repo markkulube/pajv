@@ -14,10 +14,12 @@
                 "label": { "type": "string" },
                 "href": { "$ref": "#/properties/definitions/url_type" }
               },
-              "required": ["label", "href"]
+              "required": ["label", "href"],
+              "additionalProperties": false
             }
           },
-          "required": ["link"]
+          "required": ["link"],
+          "additionalProperties": false
         }
       },
       "url_type": {
