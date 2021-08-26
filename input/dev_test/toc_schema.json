@@ -1,22 +1,26 @@
 {
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Table Of Contents",
+  "description": "Structure of a TOC",
   "type": "object",
   "properties": {
     "definitions": {
+    "link": {
+        "type": "object",
+        "properties": {
+            "label": { "type": "string" },
+            "href": { "$ref": "#/properties/definitions/url_type"}
+        },
+        "required": ["label", "href"],
+        "additionalProperties": false
+        },
       "links": {
         "type": "array",
         "minItems": 1,
         "items": {
           "type": "object",
           "properties": {
-            "link": {
-              "type": "object",
-              "properties": {
-                "label": { "type": "string" },
-                "href": { "$ref": "#/properties/definitions/url_type" }
-              },
-              "required": ["label", "href"],
-              "additionalProperties": false
-            }
+            "link": { "$ref": "#/properties/definitions/link" }
           },
           "required": ["link"],
           "additionalProperties": false
@@ -44,6 +48,12 @@
                 "analytics",
                 "blockchain",
                 "compute",
+                    "compute_baremetal",
+                    "compute_classic",
+                    "content",
+                    "openwhisk",
+                    "runtime",
+                    "virtualservers",
                 "containers",
                 "databse",
                 "dev_ops",
@@ -54,9 +64,16 @@
                 "migration_tools",
                 "mobile",
                 "network",
+                    "network_classic",
+                    "network_edge",
+                    "network_interconnectivity",
+                    "network_vpc",
                 "platform_services",
                 "security",
-                "storage"
+                "storage",
+                    "storage_classic",
+                    "storage_datamovement",
+                    "storage_vpc"
               ]
             },
             "audience": {
@@ -84,6 +101,7 @@
                   "id": { "type": "string" },
                   "topics": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                       "anyOf": [
                         {
@@ -95,6 +113,7 @@
                                 "label": { "type": "string" },
                                 "topics": {
                                   "type": "array",
+                                  "minItems": 1,
                                   "items": {
                                     "anyOf": [
                                       { "type": "string" },
@@ -107,17 +126,30 @@
                                               "label": { "type": "string" },
                                               "topics": {
                                                 "type": "array",
+                                                "minItems": 1,
                                                 "items": {
-                                                  "type": "string"
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "link": { "$ref": "#/properties/definitions/link" }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        {
+                                                            "type": "string"
+                                                        }
+                                                    ]
                                                 }
                                               },
                                               "links": {
                                                 "$ref": "#/properties/definitions/links"
                                               }
                                             },
-                                            "required": ["label", "topics"],
+                                            "required": ["label"],
                                             "additionalProperties": false
-                                          }
+                                          },
+                                        "link": { "$ref": "#/properties/definitions/link" }
                                         },
                                         "additionalProperties": false
                                       }
@@ -128,9 +160,10 @@
                                   "$ref": "#/properties/definitions/links"
                                 }
                               },
-                              "required": ["label", "topics"],
+                              "required": ["label"],
                               "additionalProperties": false
-                            }
+                            },
+                            "link": { "$ref": "#/properties/definitions/link" }
                           },
                           "additionalProperties": false,
                           "links": { "$ref": "#/properties/definitions/links" }
@@ -141,7 +174,7 @@
                   },
                   "links": { "$ref": "#/properties/definitions/links" }
                 },
-                "required": ["id", "topics"],
+                "required": ["id"],
                 "additionalProperties": false
               }
             },

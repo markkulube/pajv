@@ -21,11 +21,14 @@ toc:
           - account_overview.md
           - /billing-usage/billing-usage-committed-use
           - enterprise-video.md
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
           - topicgroup:
               label: Best practices
-              topics:
-              - bp_account.md
-              - bp_enterprise.md
               links:
               - link:
                   label: Catalog Management
