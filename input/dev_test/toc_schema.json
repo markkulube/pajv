@@ -97,6 +97,7 @@
             "properties": {
               "navgroup": {
                 "type": "object",
+                "minProperties": 2,
                 "properties": {
                   "id": { "type": "string" },
                   "topics": {
@@ -109,6 +110,7 @@
                           "properties": {
                             "topicgroup": {
                               "type": "object",
+                              "minProperties": 2,
                               "properties": {
                                 "label": { "type": "string" },
                                 "topics": {
@@ -122,6 +124,7 @@
                                         "properties": {
                                           "topicgroup": {
                                             "type": "object",
+                                            "minProperties": 2,
                                             "properties": {
                                               "label": { "type": "string" },
                                               "topics": {

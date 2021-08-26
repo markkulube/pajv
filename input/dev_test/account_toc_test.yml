@@ -27,6 +27,12 @@ toc:
           - link:
               label: Catalog Management
               href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
           - topicgroup:
               label: Best practices
               links:
@@ -66,6 +72,25 @@ toc:
           - link:
               label: Catalog Management
               href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+      links:
+      - link:
+          label: Catalog Management
+          href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+      - link:
+          label: Catalog Management
+          href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+
+  - navgroup:
+      id: tutorial
       links:
       - link:
           label: Catalog Management
