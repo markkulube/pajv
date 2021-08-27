@@ -28,7 +28,7 @@
       },
       "url_type": {
         "type": "string",
-        "pattern": "(^/)|(https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
+        "pattern": "(^/)|(https?:\\/\\/(({DomainName})|((www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6})\\b)([-a-zA-Z0-9()@:%_\\+.~#?&//=]*))"
       }
     },
     "toc": {
@@ -97,7 +97,6 @@
             "properties": {
               "navgroup": {
                 "type": "object",
-                "minProperties": 2,
                 "properties": {
                   "id": { "type": "string" },
                   "topics": {
@@ -110,7 +109,6 @@
                           "properties": {
                             "topicgroup": {
                               "type": "object",
-                              "minProperties": 2,
                               "properties": {
                                 "label": { "type": "string" },
                                 "topics": {
@@ -124,7 +122,6 @@
                                         "properties": {
                                           "topicgroup": {
                                             "type": "object",
-                                            "minProperties": 2,
                                             "properties": {
                                               "label": { "type": "string" },
                                               "topics": {
@@ -149,7 +146,27 @@
                                                 "$ref": "#/properties/definitions/links"
                                               }
                                             },
-                                            "required": ["label"],
+                                            "anyOf": [
+                                                {
+                                                    "required": [
+                                                        "label",
+                                                        "topics"
+                                                    ]
+                                                },
+                                                {
+                                                    "required": [
+                                                        "label",
+                                                        "links"
+                                                    ]
+                                                },
+                                                {
+                                                    "required": [
+                                                        "label",
+                                                        "topics",
+                                                        "links"
+                                                    ]
+                                                }
+                                            ],
                                             "additionalProperties": false
                                           },
                                         "link": { "$ref": "#/properties/definitions/link" }
@@ -163,7 +180,27 @@
                                   "$ref": "#/properties/definitions/links"
                                 }
                               },
-                              "required": ["label"],
+                              "anyOf": [
+                                {
+                                    "required": [
+                                        "label",
+                                        "topics"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "label",
+                                        "links"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "label",
+                                        "topics",
+                                        "links"
+                                    ]
+                                }
+                            ],
                               "additionalProperties": false
                             },
                             "link": { "$ref": "#/properties/definitions/link" }
@@ -177,7 +214,27 @@
                   },
                   "links": { "$ref": "#/properties/definitions/links" }
                 },
-                "required": ["id"],
+                "anyOf": [
+                    {
+                        "required": [
+                            "id",
+                            "topics"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "id",
+                            "links"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "id",
+                            "topics",
+                            "links"
+                        ]
+                    }
+                ],
                 "additionalProperties": false
               }
             },

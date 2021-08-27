@@ -45,7 +45,7 @@ toc:
           links:
           - link:
               label: Catalog Management
-              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+              href: https://{DomainName}/apidocs/resource-catalog/private-catalog
           - link:
               label: Catalog Management
               href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
@@ -98,3 +98,30 @@ toc:
       - link:
           label: Catalog Management
           href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+      topics:
+      - link:
+          label: Catalog Management
+          href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+      - link:
+          label: Catalog Management
+          href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+      - topicgroup:
+          label: Sharing software with users in your account
+          topics:
+          - catalog-vsi-tutorial.md
+          - catalog-operator-tutorial.md
+          - catalog-opbundle-tutorial.md
+          - catalog-terraform-template-tutorial.md
+          links:
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
+          - link:
+              label: Catalog Management
+              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
