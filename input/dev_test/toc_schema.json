@@ -128,6 +128,14 @@
                                       {
                                         "type": "object",
                                         "properties": {
+                                            "topic": {"type": "string"},
+                                            "navtitle": {"type": "string"}
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                      {
+                                        "type": "object",
+                                        "properties": {
                                           "topicgroup": {
                                             "type": "object",
                                             "properties": {
@@ -144,6 +152,14 @@
                                                             },
                                                             "additionalProperties": false
                                                         },
+                                                        {
+                                                          "type": "object",
+                                                          "properties": {
+                                                              "topic": {"type": "string"},
+                                                              "navtitle": {"type": "string"}
+                                                          },
+                                                          "additionalProperties": false
+                                                      },
                                                         {
                                                             "type": "string"
                                                         }
@@ -216,7 +232,15 @@
                           "additionalProperties": false,
                           "links": { "$ref": "#/properties/definitions/links" }
                         },
-                        { "type": "string" }
+                        { "type": "string" },
+                        {
+                          "type": "object",
+                          "properties": {
+                              "topic": {"type": "string"},
+                              "navtitle": {"type": "string"}
+                          },
+                          "additionalProperties": false
+                      }
                       ]
                     }
                   },
